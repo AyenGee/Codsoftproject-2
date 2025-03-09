@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/hstyle.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="logo"><h1>Blog'n Platf'm</h1></div>
+        <input type="text" placeholder="search" class="search">
+        <div class="button">
+            <a href="/write"><button>Write</button></a>
+            <a href="/login"><button>Login</button></a>
+            <a href="/signUp"><button>Sign Up</button></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <% if (blogs && blogs.length > 0) { %> <!-- Check if blogs is defined and has blogs -->
+            <% blogs.forEach(blog => { %>
+                <div class="blog-card">
+                    <h2><%= blog.title %></h2>
+                    <p><%= blog.content.substring(0, 100) %>...</p>
+                    <p><strong>Category:</strong> <%= blog.category %></p>
+                    <p><strong>Author:</strong> <%= blog.author %></p>
+                    <img src="/uploads/<%= blog.image %>" alt="Blog Image" width="300">
+                    <a href="/blog/<%= blog._id %>">Read more</a>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No blogs available.</p>
+        <% } %>
+    </div>
+
+</body>
+</html>
